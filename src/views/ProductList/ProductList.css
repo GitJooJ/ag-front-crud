@@ -1,0 +1,54 @@
+.table {
+  margin: 20px 15px;
+  padding: 10px;
+  text-align: left;
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  width: 98.5%;
+  color: #ffffff;
+  font-weight: 500;
+
+  & th {
+    font-size: 1.2rem;
+    border-bottom: 2px solid #ffffff;
+  }
+
+  & th:last-child {
+    text-align: center;
+  }
+
+  & td:last-child {
+    text-align: center;
+  }
+
+  button {
+    border: none;
+    background-color: #ffffff;
+    border-radius: 30%;
+    color: var(--primary-color);
+    padding: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+
+    &:hover {
+      background-color: var(--secondary-color);
+      color: #ffffff;
+    }
+  }
+
+  & button:first-child {
+    margin-right: 2px;
+  }
+
+  & button:last-child {
+    margin-left: 2px;
+  }
+}
+
+.actions {
+  width: 80px;
+}
+
+.price {
+  width: 130px;
+}

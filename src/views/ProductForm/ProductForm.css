@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  max-width: 800px;
+  /* background: #04C1F3; */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.responsive-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .responsive-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

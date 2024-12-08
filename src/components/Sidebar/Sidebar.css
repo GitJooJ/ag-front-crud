@@ -1,0 +1,29 @@
+.sidebar {
+  height: 100vh;
+  width: 210px;
+  background-color: #04C1F3;
+  display: flex;
+  flex-direction: column;
+
+  & h1 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+  }
+}
+
+.logo {
+  width: 150px;
+  object-fit: contain;
+  align-self: center;
+  box-shadow: inset;
+  padding: 5px 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 0 15px;
+}

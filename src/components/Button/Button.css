@@ -1,0 +1,27 @@
+.button {
+  background-color: #04C1F3;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s;
+  font-family: inherit;
+
+  &:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+
+  &:hover {
+    background-color: #13679F;
+  }
+}

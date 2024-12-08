@@ -1,0 +1,36 @@
+.textbox {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  margin: 10px 0;
+  flex: 1;
+}
+
+.field {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid #04C1F3;
+  outline-color: #13679F;
+  resize: none;
+  font-size: 1rem;
+}
+
+.label {
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.error-display {
+  color: #ff0000;
+  font-size: 0.8rem;
+  height: 20px;
+  transition: all 0.2s;
+}
+
+/* .error-hidden {
+  height: 1px;
+} */

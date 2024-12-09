@@ -1,3 +1,4 @@
+import cornerImage from '../../assets/corner.png';
 import './Header.css';
 
 interface HeaderProps {
@@ -6,6 +7,9 @@ interface HeaderProps {
 
 export const Header = ({ title }: HeaderProps) => {
   return (
-    <header className='header'>{title}</header>
+    <div className={'header-container'}>
+      <header className={'header'}>{title}</header>
+      <img src={cornerImage} alt={'corner'} className={'adornment'} />
+    </div>
   )
 }

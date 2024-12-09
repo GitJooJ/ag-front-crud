@@ -111,16 +111,18 @@ export const ProductForm = () => {
   }
 
   return (
-    <div className={'form-container'}>
+    <div className={'page-container'}>
       <Header title='Cadastro de Produtos' />
-      <form className='form' onSubmit={handleSubmit}>
-        <div className='responsive-row'>
-          <TextField label='Nome' growth={4} value={product.name} onChange={handleNameChange} error={errors.name} />
-          <TextField label='Preço' growth={1} value={product.priceDisplay} onChange={handlePriceChange} error={errors.price} />
-        </div>
-        <TextField label='Descrição' value={product.description} onChange={handleDescriptionChange} error={errors.description} />
-        <Button type='submit' disabled={creating}>{id ? 'Atualizar Produto' : 'Cadastrar Produto'}</Button>
-      </form>
+      <div className={'form-container'}>
+        <form className='form' onSubmit={handleSubmit}>
+          <div className='responsive-row'>
+            <TextField label='Nome' growth={4} value={product.name} onChange={handleNameChange} error={errors.name} />
+            <TextField label='Preço' growth={1} value={product.priceDisplay} onChange={handlePriceChange} error={errors.price} />
+          </div>
+          <TextField label='Descrição' value={product.description} onChange={handleDescriptionChange} error={errors.description} />
+          <Button type='submit' disabled={creating}>{id ? 'Atualizar Produto' : 'Cadastrar Produto'}</Button>
+        </form>
+      </div>
     </div>
   );
 };

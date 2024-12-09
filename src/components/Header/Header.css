@@ -1,8 +1,27 @@
 .header {
-  background: #04C1F3;
+  background: var(--primary-color);
   padding: 15px;
   text-align: start;
   color: #ffffff;
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+.adornment {
+  width: 30px;
+  height: 30px;
+  transform: rotate(180deg);
+  margin-left: -8px;
+  margin-top: -7.5px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .adornment {
+    display: none;
+  }
 }

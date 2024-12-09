@@ -11,8 +11,8 @@
   padding: 10px;
   border-radius: 4px;
   box-sizing: border-box;
-  border: 1px solid #04C1F3;
-  outline-color: #13679F;
+  border: 1px solid var(--primary-color);
+  outline-color: var(--secondary-color);
   resize: none;
   font-size: 1rem;
 }

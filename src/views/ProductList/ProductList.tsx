@@ -34,9 +34,10 @@ export const ProductList = () => {
 
 
   // O useMemo é um hook do React que permite memorizar o valor de uma variável, evitando que ela seja recalculada a cada renderização do componente.
-  // No caso de uma tabela paginada, o useMemo garante que a lista de produtos exibidos seja recalculada apenas quando os dados dos produtos 
-  // ou o número da pagina mudar, o que evita cálculos desnecessários a cada re - renderização do componente e 
-  // otimiza a performance da aplicação, especialmente em listas com um grande número de items. 
+  // No caso de uma tabela paginada, o useMemo garante que a lista de produtos exibidos seja recalculada apenas quando os dados dos produtos
+  // ou o número da pagina for alterado, o que evita cálculos desnecessários a cada re - renderização do componente e
+  // otimiza a performance da aplicação, especialmente em listas com um grande número de items.
+  // a seguir está o exemplo do useMemo sendo usado na tabela de produtos do CRUD.
   const currentProducts = useMemo(() => {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;

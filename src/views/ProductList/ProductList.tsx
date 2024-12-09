@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdDelete, MdEdit } from 'react-icons/md';
+import { VscNewFile } from 'react-icons/vsc';
 import { useNavigate } from 'react-router';
 import { Header } from '../../components/Header/Header';
 import { Loading } from '../../components/Loading/Loading';
@@ -76,7 +77,10 @@ export const ProductList = () => {
     <div>
       <Header title='Listagem de Produtos' />
       {products.length === 0 ? (
-        <p>Nenhum produto encontrado.</p>
+        <div className={'no-product'}>
+          <h2>Nenhum produto foi cadastrado ainda.</h2>
+          <h3>Você pode começar pela opção de <VscNewFile /> Cadastro</h3>
+        </div>
       ) : (
         <div className={'list-container'}>
           <table className={'table'}>

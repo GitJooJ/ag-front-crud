@@ -1,5 +1,5 @@
 import { FaList } from 'react-icons/fa';
-import { IoCreateOutline } from 'react-icons/io5';
+import { VscNewFile } from 'react-icons/vsc';
 import './Sidebar.css';
 import { StyledNavlink } from './components/StyledNavlink';
 
@@ -10,7 +10,7 @@ export const Sidebar = () => {
       <h1>C.R.U.D</h1>
       <nav className={'list'}>
         <StyledNavlink to='/' end label='Listagem' icon={<FaList />} />
-        <StyledNavlink to='/cadastro' label='Cadastro' icon={<IoCreateOutline />
+        <StyledNavlink to='/cadastro' label='Cadastro' icon={<VscNewFile />
         } />
       </nav>
     </div>

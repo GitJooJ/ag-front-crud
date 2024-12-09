@@ -73,8 +73,6 @@ export const ProductForm = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(product);
-
     const { isValid, errors } = validateProduct({
       ...product,
       price: product.price,
@@ -89,7 +87,6 @@ export const ProductForm = () => {
       setCreating(true);
       const payload = { name: product.name, price: product.price, description: product.description };
       if (id) {
-        console.log(payload)
         await updateExistingProduct({ ...payload, id: Number(id) });
         alert('Produto atualizado com sucesso!');
       } else {

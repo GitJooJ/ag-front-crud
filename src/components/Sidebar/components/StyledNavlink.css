@@ -9,6 +9,10 @@
   gap: 8px;
   transition: all 0.3s;
 
+  .label {
+    font-size: 1.2rem;
+  }
+
   &:hover {
     text-shadow: 0 0 10px #ffffff;
   }

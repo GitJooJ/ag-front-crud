@@ -4,7 +4,6 @@ import { Button } from '../../components/Button/Button';
 import { Header } from '../../components/Header/Header';
 import { TextField } from '../../components/Textfield/Textfield';
 import { createProduct, getProductsById, updateExistingProduct, validateProduct } from '../../services/productService';
-import { formatCurrency } from '../../utils/formatCurrency';
 import './ProductForm.css';
 
 interface Errors {
@@ -16,7 +15,7 @@ interface Errors {
 export const ProductForm = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [product, setProduct] = useState({ name: '', price: '', description: '' });
+  const [product, setProduct] = useState({ name: '', price: 0, priceDisplay: 'R$ 0,00', description: '' });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -26,7 +25,12 @@ export const ProductForm = () => {
         try {
           const productData = await getProductsById(Number(id));
           if (productData) {
-            setProduct({ name: productData.name, price: productData.price.toString(), description: productData.description });
+            setProduct({
+              name: productData.name,
+              price: productData.price,
+              priceDisplay: productData.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+              description: productData.description,
+            });
           } else {
             alert('Produto não encontrado');
             navigate('/');
@@ -51,8 +55,14 @@ export const ProductForm = () => {
   };
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawValue = e.target.value.replace(/[^\d,.-]/g, '').replace(',', '.');
-    setProduct({ ...product, price: rawValue });
+    const rawValue = e.target.value.replace(/[^0-9]/g, '');
+    const numericValue = parseFloat(rawValue) / 100;
+
+    setProduct({
+      ...product,
+      priceDisplay: numericValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+      price: numericValue,
+    });
   };
 
   const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,11 +71,11 @@ export const ProductForm = () => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(product);
 
     const { isValid, errors } = validateProduct({
-      name: product.name,
-      price: parseFloat(product.price),
-      description: product.description
+      ...product,
+      price: product.price,
     });
 
     if (!isValid) {
@@ -73,22 +83,16 @@ export const ProductForm = () => {
       return;
     }
 
-    const priceNumber = parseFloat(product.price.replace(',', '.'));
-    if (isNaN(priceNumber) || priceNumber <= 0) {
-      setErrors({ price: 'Insira um preço válido' });
-      return;
-    }
-
     try {
       setCreating(true);
-      const productData = { ...product, price: priceNumber };
+      const payload = { ...product, price: product.price };
       if (id) {
-        await updateExistingProduct(productData);
+        await updateExistingProduct(payload);
         alert('Produto atualizado com sucesso!');
       } else {
-        await createProduct(productData);
+        await createProduct(product);
         alert('Produto cadastrado com sucesso!');
-        setProduct({ name: '', price: '', description: '' });
+        setProduct({ name: '', price: 0, priceDisplay: 'R$ 0,00', description: '' });
         setErrors({});
       }
     } catch (error) {
@@ -112,7 +116,7 @@ export const ProductForm = () => {
       <form className='form' onSubmit={handleSubmit}>
         <div className='responsive-row'>
           <TextField label='Nome' growth={4} value={product.name} onChange={handleNameChange} error={errors.name} />
-          <TextField label='Preço' growth={1} value={product.price ? formatCurrency(product.price) : 'R$ 0,00'} onChange={handlePriceChange} error={errors.price} />
+          <TextField label='Preço' growth={1} value={product.priceDisplay} onChange={handlePriceChange} error={errors.price} />
         </div>
         <TextField label='Descrição' value={product.description} onChange={handleDescriptionChange} error={errors.description} />
         <Button type='submit' disabled={creating}>Cadastrar Produto</Button>

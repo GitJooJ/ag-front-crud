@@ -1,18 +1,16 @@
-import { formatCurrency } from '../../utils/formatCurrency';
 import './Textfield.css';
 
 interface TextFieldProps {
   label: string;
   growth?: number;
-  money?: boolean;
-  value?: string;
+  value?: string | number;
   error?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TextField = ({ label, growth, value, onChange, money, error }: TextFieldProps) => {
+export const TextField = ({ label, growth, value, onChange, error }: TextFieldProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedValue = money ? formatCurrency(e.target.value) : e.target.value;
+    const formattedValue = e.target.value;
     onChange({ ...e, target: { ...e.target, value: formattedValue } });
   }
   return (

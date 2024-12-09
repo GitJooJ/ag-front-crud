@@ -9,3 +9,5 @@ Para inicializar
 ```bash
 $ yarn dev
 ```
+
+Exercício 3 - ProductList.tsx

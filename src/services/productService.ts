@@ -16,7 +16,7 @@ export function validateProduct(product: Product): ValidationResult {
     errors.name = 'Insira um nome válido';
   }
 
-  if (typeof product.price !== 'number' || product.price <= 0) {
+  if (typeof product.price !== 'number' || product.price <= 0 || product.price > 9999999.99) {
     errors.price = 'Insira um preço válido';
   }
 
@@ -32,7 +32,7 @@ export function validateProduct(product: Product): ValidationResult {
 
 export const createProduct = async (product: Product) => {
   try {
-    if (product.price <= 0 || isNaN(product.price)) {
+    if (product.price <= 0 || isNaN(product.price) || product.price > 9999999.99) {
       throw new Error('Preço inválido');
     }
     await saveProduct(product);
@@ -43,7 +43,7 @@ export const createProduct = async (product: Product) => {
 
 export const updateExistingProduct = async (product: Product) => {
   try {
-    if (product.price <= 0 || isNaN(product.price)) {
+    if (product.price <= 0 || isNaN(product.price) || product.price > 9999999.99) {
       throw new Error('Preço inválido');
     }
     await updateProduct(product);

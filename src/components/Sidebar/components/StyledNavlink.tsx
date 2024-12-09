@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { NavLink } from "react-router";
+import { ReactNode } from 'react';
+import { NavLink } from 'react-router';
 import './StyledNavlink.css';
 
 interface StyledNavlinkProps {
@@ -13,7 +13,7 @@ export const StyledNavlink = ({ to, label, end, icon }: StyledNavlinkProps) => {
   return (
     <NavLink className={'navlink'} to={to} end={end}>
       {icon}
-      {label}
+      <span className={'label'}>{label}</span>
     </NavLink>
   )
 }

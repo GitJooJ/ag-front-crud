@@ -95,6 +95,10 @@
 
 @media (max-width: 768px) {
   .price {
-    width: 90px;
+    width: 100px;
+  }
+
+  .description {
+    display: none;
   }
 }

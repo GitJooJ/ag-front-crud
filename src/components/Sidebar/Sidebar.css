@@ -30,6 +30,25 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    width: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+
+    .logo {
+      display: none;
+    }
+
+    & h1 {
+      display: none;
+    }
+
+    .list {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      padding: 10px 0 0 0;
+    }
   }
 }

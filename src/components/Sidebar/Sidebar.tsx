@@ -10,7 +10,7 @@ export const Sidebar = () => {
       <h1>C.R.U.D</h1>
       <nav className={'list'}>
         <StyledNavlink to='/' end label='Listagem' icon={<FaList />} />
-        <StyledNavlink to='/cadastro' end label='Cadastro' icon={<IoCreateOutline />
+        <StyledNavlink to='/cadastro' label='Cadastro' icon={<IoCreateOutline />
         } />
       </nav>
     </div>

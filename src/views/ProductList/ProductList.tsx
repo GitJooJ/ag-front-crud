@@ -3,6 +3,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router';
 import { Header } from '../../components/Header/Header';
+import { Loading } from '../../components/Loading/Loading';
 import { deleteProduct, Product } from '../../repositories/productRepository';
 import { getProducts } from '../../services/productService';
 import './ProductList.css';
@@ -64,7 +65,7 @@ export const ProductList = () => {
   }
 
   if (loading) {
-    return <div>Carregando...</div>
+    return <Loading />
   }
 
   if (error) {
@@ -92,7 +93,7 @@ export const ProductList = () => {
                 <tr key={product.id}>
                   <td>{product.name}</td>
                   <td>R$ {product.price}</td>
-                  <td>{product.description}</td>
+                  <td className={'description'}>{product.description}</td>
                   <td>
                     <button onClick={() => handleEdit(product)}>
                       <MdEdit size={'20px'} />
